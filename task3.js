@@ -17,23 +17,24 @@ let   t1 = process.argv.pop(),
 process.stdout.write( calc( t1, t2 ) );
 
 function calc(time1, time2) {
-  let date    = new Date((Number(time1) + Number(time2)) * 1000);
+  let time    = (Number(time1) + Number(time2));
   
-  let hour    = +date.getUTCHours(),
-      minutes = +date.getMinutes(),
-      seconds = +date.getSeconds(),
-      res     = '';
-    
-  if (hour) {
-    res += `${hour} ${getEnding(hour, ['час', 'часа', 'часов'])} `
+  let hour,
+      minutes,
+      seconds,
+      res = '';
+  
+  if (hour = Math.floor(time/3600)) {
+    res += `${hour} ${getEnding(hour, ['час', 'часа', 'часов'])} `;
+    time = time%3600;
   }
-  if (minutes) {
-    res += `${minutes} ${getEnding(minutes, ['минута', 'минуты', 'минут'])} `
+  if (minutes = Math.floor(time/60)) {
+    res += `${minutes} ${getEnding(minutes, ['минута', 'минуты', 'минут'])} `;
+    time = time%60;
   }
-  if (seconds) {
+  if (seconds = time) {
     res += `${seconds} ${getEnding(seconds, ['секунда', 'секунды', 'секунд'])}`
   }
-  
   return res;
 }
 
