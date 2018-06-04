@@ -18,9 +18,6 @@ process.stdout.write( calcDay( day, monthName, year ) );
 
 
 function calcDay(day, month, year) {
-  let monthNumber,
-      date;
-  
   const MONTHS =  [
                     'января',
                     'февраля',
